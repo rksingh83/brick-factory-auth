@@ -1,0 +1,9 @@
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/AuthenticationServiceApplication.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/config/SecurityConfig.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/controller/AuthController.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/dto/RegisterRequest.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/entity/Role.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/entity/User.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/repository/RoleRepository.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/repository/UserRepository.java
+/Users/rakeshsingh/projects/authentication-service/src/main/java/com/brickfactory/auth/service/AuthService.java

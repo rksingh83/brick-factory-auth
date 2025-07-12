@@ -1,0 +1,9 @@
+com/brickfactory/auth/repository/RoleRepository.class
+com/brickfactory/auth/controller/AuthController.class
+com/brickfactory/auth/repository/UserRepository.class
+com/brickfactory/auth/service/AuthService.class
+com/brickfactory/auth/dto/RegisterRequest.class
+com/brickfactory/auth/entity/Role.class
+com/brickfactory/auth/config/SecurityConfig.class
+com/brickfactory/auth/AuthenticationServiceApplication.class
+com/brickfactory/auth/entity/User.class
