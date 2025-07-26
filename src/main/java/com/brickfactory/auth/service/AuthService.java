@@ -3,7 +3,9 @@ package com.brickfactory.auth.service;
 import com.brickfactory.auth.dto.LoginRequest;
 import com.brickfactory.auth.dto.RegisterRequest;
 import com.brickfactory.auth.dto.UserProfileDto;
+import com.brickfactory.auth.entity.Role;
 import com.brickfactory.auth.entity.User;
+import com.brickfactory.auth.repository.RoleRepository;
 import com.brickfactory.auth.repository.UserRepository;
 import com.brickfactory.auth.security.JwtTokenProvider;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,6 +16,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
+
 @Service
 public class AuthService {
 
@@ -21,14 +25,17 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
+    private final RoleRepository roleRepository; // Add this
+
 
 
     // Constructor-based dependency injection
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider, RoleRepository roleRepository) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authenticationManager = authenticationManager;
         this.tokenProvider = tokenProvider;
+        this.roleRepository = roleRepository;
 
     }
 
@@ -42,6 +49,10 @@ public class AuthService {
         User user = new User();
         user.setFullName(request.getFullName());
         user.setEmail(request.getEmail());
+
+        Role userRole = roleRepository.findByName("ROLE_USER").orElseThrow(()-> new RuntimeException("Role not found"));
+
+        user.setRoles(Collections.singleton(userRole));
 
         // 3. Encode the password before saving
         user.setPasswordHash(passwordEncoder.encode(request.getPassword()));

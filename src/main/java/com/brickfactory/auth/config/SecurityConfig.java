@@ -38,16 +38,10 @@ public class SecurityConfig {
         http
                 // Disable CSRF protection for stateless REST APIs
                 .csrf(csrf -> csrf.disable())
-
-                // Define URL access rules
                 .authorizeHttpRequests(auth -> auth
-                        // Allow public access to all endpoints under /api/auth/
                         .requestMatchers("/api/auth/**").permitAll()
-                        // All other requests must be authenticated
                         .anyRequest().authenticated()
                 )
-
-                // Set session management to stateless
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
         http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
